@@ -1,0 +1,13 @@
+{% extends 'marvel/base.html' %}
+
+{% block title %} | Page Not Found {% endblock %}
+{% block head %}
+  {{ super() }}  
+{% endblock %}
+
+{% block NotFound %}
+<div class="not_found">
+    <h3 class="text_not_found">Page Not Found</h3>
+    <img src="{{ url_for('.static', filename='img/404cap.png') }}" alt="404 not found">
+</div>
+{% endblock NotFound %}

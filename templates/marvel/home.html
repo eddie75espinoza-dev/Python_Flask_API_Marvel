@@ -1,0 +1,21 @@
+{% extends 'marvel/base.html' %}
+
+{% block title %} | SuperHeroes {% endblock %}
+{% block head %}
+  {{ super() }}  
+{% endblock %}
+
+{% block home %}
+<div class="group__hero">
+    {% for hero in hero_list %}
+    <div class="card">
+        <a href="/hero/{{ hero.name }}">
+            <img src="{{ hero.thumbnail.path }}/standard_fantastic.{{ hero.thumbnail.extension }}" alt="{{ hero.name }}">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{ hero.name }}</h5>           
+        </div>
+    </div>
+  {% endfor %}      
+</div>
+{% endblock home %} 

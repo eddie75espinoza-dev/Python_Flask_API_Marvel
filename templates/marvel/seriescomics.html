@@ -1,0 +1,20 @@
+{% extends 'marvel/base.html' %}
+{% block title %}
+   | Comics
+{% endblock title %}
+{% block head %}
+  {{ super() }}  
+{% endblock %}
+{% block data %}
+<div class="serie__group">
+    {% for data in data_list %}
+      <div class="card" style="width: 14rem;" >
+        <img src="{{ data.thumbnail.path~'/standard_xlarge.'~data.thumbnail.extension }}" alt="">
+        <div class="card-body">
+            <h5 class="card-title">{{ data.title }}</h5>
+            <p class="card-text">{{ data.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock data %}

@@ -1,0 +1,29 @@
+{% block navbar %}
+
+<nav class="navibar" id="navibar">
+    <div class="e_content">
+        <!-- Logo -->
+        <div class="navibar_branch">
+            <a href="/" id="e_logo"> 
+            <img class="logo-x" src="{{ url_for('.static', filename='img/faviconblue.ico')}}" alt="eddie75 logo">
+            </a> <span>eHero</span>
+        </div>       
+        <span><img class="marvel__logo" src="{{ url_for('.static', filename='img/marvel_logo.png')}}" alt="Marvel Logo"></span> 
+        <!-- Menu --------------- -->         
+        <ul class="menu-list">
+            <div class="icon cancel-btn">
+                <i class="fas fa-times"></i>
+            </div>
+            <li><a href="/"> Home </a></li>
+            <li><a href="/heroes">Heroes</a></li>
+            <li><a href="/series">Series</a></li>
+            <li><a href="/comics">Comics</a></li>
+            <li><a href="/about">About</a></li>          
+        </ul> 
+        <div class="icon menu-btn">
+            <i class="fas fa-bars"></i>
+        </div> 
+    </div>    
+</nav>
+
+{% endblock  %}

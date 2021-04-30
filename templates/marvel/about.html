@@ -1,0 +1,68 @@
+{% extends 'marvel/base.html' %}
+{% block about %}
+<br>
+<div class="card">
+    <div class="mb-3">
+        <label for="FormControlInput" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="FormControlInput" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="FormControlTextarea" class="form-label">Text here</label>
+        <textarea class="form-control" id="FormControlTextarea" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary" id="btn__about">Contact me</button>
+</div>
+<div class="container__location">
+    <div class="m-left">
+        <div class="location">
+            <h4>CITIES</h4>
+            <span>
+                <!-- Icon -->
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            </span>
+            <span>
+                <p>Buenos Aires, Pcia Bs As, Argentina</p>
+            </span>
+        </div>
+        <div class="location">
+            <span>
+                <!-- Icon -->
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            </span>
+            <span>
+                <p>San Antonio, Miranda, Venezuela</p>
+            </span>
+        </div>
+    </div>
+    <div class="m-right">
+        <h4>FOR CONTACT</h4>
+        <!-- Email & Phone -->
+        <div class="contact">
+            <span>
+                <i class="fas fa-envelope"></i>
+            </span>
+            <br>
+            <span>
+                <a href = "mailto: eddie75espinoza@gmail.com">Send Email</a>
+            </span>
+        </div>
+        <div class="contact">
+            <span>
+                <i class="fas fa-phone-square"></i>
+            </span>
+            <span>
+                <p>Phone: <span itemprop="telephone"><a href="tel:+5491150085437">54 911 5008 5437</a></span></p>
+            </span>
+        </div>
+    </div>
+    <div class="s-icons">
+    <!-- Social Icons -->
+        <div class="s-box">
+            <span><a href="https://www.instagram.com/eddie75espinoza/"><i class="fab fa-instagram-square"></i></a></span>
+            <span><a href="https://www.linkedin.com/in/eddie-espinoza/"><i class="fab fa-linkedin" ></i></a></span>
+            <span><a href="https://twitter.com/eddie_racing"><i class="fab fa-twitter-square"></i></a></span>
+        </div>
+    </div>
+</div>
+
+{% endblock about %}
