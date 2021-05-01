@@ -12,8 +12,7 @@ fuente: "http://marvel.com\">Data provided by Marvel. © 2021 MARVEL
 
 __author__ = 'eddie75espinoza'
 __date__ = '24/04/2021'
-
-
+ 
 from flask import Flask, request, render_template, jsonify, url_for
 from secureconfig import PRIVATE_API_KEY, PUBLIC_API_KEY
 import pymarvel
@@ -32,15 +31,16 @@ base = 'https://gateway.marvel.com/%s/public/' %(VERSION_DEFAULT)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     try:
-        hero_list = pymarvel.character_general() 
+        event_hero_list = pymarvel.get_characters_byEventId()
+        #serie_hero_list = pymarvel.get_characters_bySerieId()
         if request.method == 'POST':
-            # se usa este metodo para obtener el valor del form
+            # se usa este metodo para obtener el valor del form            
             name = request.form['name']
             return hero(name)
     except NameError:
         print('Page not found... 404')
 
-    return render_template('marvel/home.html', hero_list = hero_list)
+    return render_template('marvel/home.html', data_list = event_hero_list)
 
 @app.route('/heroes', methods=['GET', 'POST'])
 def heroes():
@@ -65,7 +65,7 @@ def hero(name):
         id = hero_list.get('id')            
         comic_hero_list = pymarvel.get_comics_by_characterId(id)                 
         serie_character = pymarvel.get_serie_by_id_character(id)
-
+        
     except IndexError:
         print("Something else went wrong...404")        
         return render_template('marvel/404.html')
@@ -73,20 +73,41 @@ def hero(name):
 
 @app.route('/series', methods=['GET', 'POST'])
 def series_startName():
-    series_list = pymarvel.get_series_by_startName('avengers').get('data').get('results')
-         
+    try:
+        series_list = pymarvel.get_series_by_startName('avengers').get('data').get('results')
+        if request.method == 'POST':
+            # se usa este metodo para obtener el valor del form            
+            name = request.form['name']
+            return hero(name)
+    except IndexError:
+        return render_template('marvel/404.html')
+
     return render_template('marvel/seriescomics.html', data_list = series_list)
 
-@app.route('/comics')
+@app.route('/comics', methods=['GET', 'POST'])
 def comics():
-    comics_list = pymarvel.comics('spider-man').get('data').get('results')  
+    try:
+        comics_list = pymarvel.comics('spider-man').get('data').get('results')  
+        if request.method == 'POST':
+            # se usa este metodo para obtener el valor del form            
+            name = request.form['name']
+            return hero(name)
+    except IndexError:
+        return render_template('marvel/404.html')
 
     return render_template('marvel/seriescomics.html', data_list = comics_list)
 
-@app.route('/about')
+@app.route('/about', methods=['GET', 'POST'])
 def about():
-    
+    try:
+        if request.method == 'POST':
+            # se usa este metodo para obtener el valor del form            
+            name = request.form['name']
+            return hero(name)
+    except IndexError:
+        return render_template('marvel/404.html')
+
     return render_template('marvel/about.html')
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port = 4000, debug=True)
+    app.run(host='192.168.0.99', port = 4000, debug=True)

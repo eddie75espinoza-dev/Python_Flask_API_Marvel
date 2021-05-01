@@ -7,13 +7,13 @@
 
 {% block home %}
 <div class="group__hero">
-    {% for hero in hero_list %}
+    {% for data in data_list %}
     <div class="card">
-        <a href="/hero/{{ hero.name }}">
-            <img src="{{ hero.thumbnail.path }}/standard_fantastic.{{ hero.thumbnail.extension }}" alt="{{ hero.name }}">
+        <a href="/hero/{{ data.name }}">
+            <img src="{{ data.thumbnail.path }}/standard_fantastic.{{ data.thumbnail.extension }}" alt="{{ data.name }}">
         </a>
         <div class="card-body">
-            <h5 class="card-title">{{ hero.name }}</h5>           
+            <h5 class="card-title">{{ data.name }}</h5>           
         </div>
     </div>
   {% endfor %}      

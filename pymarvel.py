@@ -1,6 +1,6 @@
 from datetime import datetime
 from secureconfig import PRIVATE_API_KEY, PUBLIC_API_KEY
-from model import Heroe
+
 import json
 import hashlib
 import requests
@@ -72,4 +72,28 @@ def get_serie_by_id_character(id):
                                   'ts': ts,
                                   'hash': _hash}).json() 
     data_serie = data.get('data').get('results')     
+    return data_serie
+
+def get_characters_byComicId(*arg):
+    data = requests.get(base + f'comics/{arg}/characters',
+                          params={'apikey': public,
+                                  'ts': ts,
+                                  'hash': _hash}).json()  
+    data_comic = data.get('data').get('results')        
+    return data_comic
+
+def get_characters_byEventId(id=310):
+    data = requests.get(base + f'events/{id}/characters',
+                          params={'apikey': public,
+                                  'ts': ts,
+                                  'hash': _hash}).json()  
+    data_event = data.get('data').get('results')        
+    return data_event
+
+def get_characters_bySerieId(id=24044):
+    data = requests.get(base + f'series/{id}/characters',
+                          params={'apikey': public,
+                                  'ts': ts,
+                                  'hash': _hash}).json()  
+    data_serie = data.get('data').get('results')        
     return data_serie
